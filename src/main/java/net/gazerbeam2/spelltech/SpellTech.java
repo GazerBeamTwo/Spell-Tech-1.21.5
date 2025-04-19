@@ -1,7 +1,9 @@
 package net.gazerbeam2.spelltech;
 
 import net.fabricmc.api.ModInitializer;
-
+import net.gazerbeam2.spelltech.block.ModBlocks;
+import net.gazerbeam2.spelltech.item.ModItemGroups;
+import net.gazerbeam2.spelltech.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +15,9 @@ public class SpellTech implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
-		LOGGER.info("Hello Fabric world!");
+		ModItemGroups.registerItemGroups();
+
+		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 	}
 }
