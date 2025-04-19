@@ -27,7 +27,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
 
-        // addDrop(ModBlocks.PINK_GARNET_DEEPSLATE_ORE, multipleOreDrops(ModBlocks.PINK_GARNET_DEEPSLATE_ORE, ModItems.RAW_PINK_GARNET, 3, 7));
+        addDrop(ModBlocks.MANA_CRYSTAL, multipleOreDrops(ModBlocks.MANA_CRYSTAL, ModItems.MANA_SHARD, 3, 7));
 
     }
 

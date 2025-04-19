@@ -18,6 +18,7 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.spelltech.mana_crystal.blocks"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModItems.MANA_SHARD);
+                        entries.add(ModBlocks.MANA_CRYSTAL);
 
                     }).build());
 

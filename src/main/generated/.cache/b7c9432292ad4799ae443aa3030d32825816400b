@@ -1,3 +1,6 @@
 // 1.21.5	-999999999-01-01T00:00:00	Spell Tech/Model Definitions
+c5735c09b50dab8cb4b6f8d30c0aa609dc981502 assets/spelltech/blockstates/mana_crystal.json
+66803375ec9749270f7a88a3fbf25a72b5c3da6e assets/spelltech/items/mana_crystal.json
 7a1e6672c3566fc285cdb030af11e78086e72167 assets/spelltech/items/mana_shard.json
+6cf96bc6f4a208c79a0ee1de04089c8534bfa6d4 assets/spelltech/models/block/mana_crystal.json
 58b60d498701a179fabfdd43425bdfd7ae93935b assets/spelltech/models/item/mana_shard.json

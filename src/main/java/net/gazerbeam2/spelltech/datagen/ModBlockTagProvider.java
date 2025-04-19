@@ -15,11 +15,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-//        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-//                .add(ModBlocks.PINK_GARNET_BLOCK);
-//
-//        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
-//                .add(ModBlocks.PINK_GARNET_DEEPSLATE_ORE);
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(ModBlocks.MANA_CRYSTAL);
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.MANA_CRYSTAL);
 
     }
 }
