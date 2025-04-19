@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "spelltech",
+	"version": "${version}",
+	"name": "Spell Tech",
+	"description": "Spell Tech Fabric Mod, adding over 200 spells!",
+	"authors": [
+		"GazerBeam2",
+		"TheAnnihilator"
+	],
+	"contact": {
+		"homepage": "https://gazerbeam2.net/",
+		"sources": "https://github.com/GazerBeamTwo/Spell-Tech-1.21.5"
+	},
+	"license": "MIT",
+	"icon": "assets/spelltech/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.gazerbeam2.spelltech.SpellTech"
+		],
+		"fabric-datagen": [
+			"net.gazerbeam2.spelltech.SpellTechDataGenerator"
+		],
+		"client": [
+			"net.gazerbeam2.spelltech.SpellTechClient"
+		]
+	},
+	"mixins": [
+		"spelltech.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.13",
+		"minecraft": "~1.21.5",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
