@@ -1,7 +1,10 @@
 package net.gazerbeam2.spelltech.world;
 
 import net.gazerbeam2.spelltech.SpellTech;
+import net.gazerbeam2.spelltech.block.ModBlocks;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
+import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -13,18 +16,27 @@ import net.minecraft.world.gen.placementmodifier.*;
 import java.util.List;
 
 public class ModPlacedFeatures {
-    public static final RegistryKey<PlacedFeature> MANA_CRYSTAL_BLOCK_PLACED_KEY = registerKey("mana_crystal_block_placed");
+//    public static final RegistryKey<PlacedFeature> MANA_CRYSTAL_BLOCK_PLACED_KEY = registerKey("mana_crystal_block_placed");
 
     public static final RegistryKey<PlacedFeature> MANA_CRYSTAL_PLACED_KEY = registerKey("mana_crystal_placed");
+
 
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatures = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
-        register(context, MANA_CRYSTAL_BLOCK_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.MANA_CRYSTAL_BLOCK_KEY),
-                ModOrePlacement.modifiersWithCount(14,
-                        HeightRangePlacementModifier.trapezoid(YOffset.fixed(-80), YOffset.fixed(80))
-                        ));
+//        register(context, MANA_CRYSTAL_BLOCK_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.MANA_CRYSTAL_BLOCK_KEY),
+//                ModOrePlacement.modifiersWithCount(14,
+//                        HeightRangePlacementModifier.trapezoid(YOffset.fixed(-80), YOffset.fixed(80))
+//                        ));
+
+        register(context, MANA_CRYSTAL_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.MANA_CRYSTAL_KEY),
+                List.of(
+                        CountPlacementModifier.of(7),
+                        SquarePlacementModifier.of(),
+                        HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(32)),
+                        BiomePlacementModifier.of()
+                ));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {

@@ -1,9 +1,9 @@
 {
-  "feature": "spelltech:mana_crystal_block",
+  "feature": "spelltech:mana_crystal_feature",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 14
+      "count": 7
     },
     {
       "type": "minecraft:in_square"
@@ -11,12 +11,12 @@
     {
       "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:trapezoid",
+        "type": "minecraft:uniform",
         "max_inclusive": {
-          "absolute": 80
+          "absolute": 32
         },
         "min_inclusive": {
-          "absolute": -80
+          "absolute": -64
         }
       }
     },
