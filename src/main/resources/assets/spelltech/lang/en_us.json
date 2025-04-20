@@ -1,7 +1,8 @@
 {
   "item.spelltech.mana_shard": "Mana Shard",
-
   "item.spelltech.mana_crystal": "Mana Crystal",
+
+  "block.spelltech.mana_crystal_block": "Mana Crystal Block",
 
   "itemgroup.spelltech.mana_crystal.blocks": "Mana Items"
 }

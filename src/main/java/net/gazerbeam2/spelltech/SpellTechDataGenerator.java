@@ -3,7 +3,10 @@ package net.gazerbeam2.spelltech;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.gazerbeam2.spelltech.datagen.*;
+import net.gazerbeam2.spelltech.world.ModConfiguredFeatures;
+import net.gazerbeam2.spelltech.world.ModPlacedFeatures;
 import net.minecraft.registry.RegistryBuilder;
+import net.minecraft.registry.RegistryKeys;
 
 public class SpellTechDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -22,8 +25,8 @@ public class SpellTechDataGenerator implements DataGeneratorEntrypoint {
 	public void buildRegistry(RegistryBuilder registryBuilder) {
 		DataGeneratorEntrypoint.super.buildRegistry(registryBuilder);
 
-//		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
-//		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
 
 	}
 }
