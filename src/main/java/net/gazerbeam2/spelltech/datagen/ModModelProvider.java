@@ -16,12 +16,13 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
 //      blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PINK_GARNET_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MANA_CRYSTAL);
+        blockStateModelGenerator.registerAmethyst(ModBlocks.MANA_CRYSTAL);
 
     }
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.MANA_SHARD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MANA_CRYSTAL, Models.GENERATED);
     }
 }

@@ -14,12 +14,10 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
-import java.util.function.Function;
-
 public class ModBlocks {
 
-    public static final Block MANA_CRYSTAL = registerBlock("mana_crystal",
-            new Block (AbstractBlock.Settings.create()
+    public static final Block MANA_CRYSTAL = registerBlockWithoutBlockItem("mana_crystal",
+            new AmethystClusterBlock(7.0F, 10.0F, AbstractBlock.Settings.create()
                     .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(SpellTech.MOD_ID, "mana_crystal")))
                     .mapColor(MapColor.PURPLE)
                     .solid()
@@ -27,7 +25,12 @@ public class ModBlocks {
                     .sounds(BlockSoundGroup.AMETHYST_CLUSTER)
                     .strength(1.5F)
                     .luminance(state -> 5)
-                    .pistonBehavior(PistonBehavior.DESTROY)));
+                    .pistonBehavior(PistonBehavior.DESTROY)
+            ));
+
+    private static Block registerBlockWithoutBlockItem(String name, Block block) {
+        return Registry.register(Registries.BLOCK, Identifier.of(SpellTech.MOD_ID, name), block);
+    }
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
@@ -39,6 +42,7 @@ public class ModBlocks {
                 new BlockItem(block, new Item.Settings()
                         .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(SpellTech.MOD_ID, name))).useBlockPrefixedTranslationKey()));
     }
+
 
     public static void registerModBlocks() {
         SpellTech.LOGGER.info("Registering Mod Blocks for " + SpellTech.MOD_ID);

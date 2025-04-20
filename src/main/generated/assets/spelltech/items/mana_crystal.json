@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "spelltech:block/mana_crystal"
+    "model": "spelltech:item/mana_crystal"
   }
 }
