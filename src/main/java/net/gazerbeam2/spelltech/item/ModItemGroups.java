@@ -19,6 +19,7 @@ public class ModItemGroups {
                     .entries((displayContext, entries) -> {
                         entries.add(ModItems.MANA_SHARD);
                         entries.add(ModBlocks.MANA_CRYSTAL);
+                        entries.add(ModBlocks.MANA_CRYSTAL_BLOCK);
 
                     }).build());
 
