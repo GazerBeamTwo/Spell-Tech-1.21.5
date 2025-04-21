@@ -27,8 +27,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
 
-        addDrop(ModBlocks.MANA_CRYSTAL, multipleOreDrops(ModBlocks.MANA_CRYSTAL, ModItems.MANA_SHARD, 3, 7));
-        addDrop(ModBlocks.MANA_CRYSTAL_BLOCK, multipleOreDrops(ModBlocks.MANA_CRYSTAL_BLOCK, ModItems.MANA_SHARD, 6, 14));
+        addDrop(ModBlocks.MANA_CRYSTAL, multipleOreDrops(ModBlocks.MANA_CRYSTAL, ModItems.MANA_SHARD, 2, 5));
+        addDrop(ModBlocks.MANA_CRYSTAL_BLOCK, multipleOreDrops(ModBlocks.MANA_CRYSTAL_BLOCK, ModItems.MANA_SHARD, 5, 7));
 
     }
 
