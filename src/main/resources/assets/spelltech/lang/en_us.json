@@ -4,5 +4,9 @@
 
   "block.spelltech.mana_crystal_block": "Mana Crystal Block",
 
-  "itemgroup.spelltech.mana_crystal.blocks": "Mana Items"
+  "itemgroup.spelltech.mana_crystal.blocks": "Mana Items",
+
+  "key.spelltech.openspelltree": "Open Spell Tree",
+
+  "category.spelltech": "Spell Tech"
 }

@@ -4,7 +4,6 @@ import net.fabricmc.api.ModInitializer;
 import net.gazerbeam2.spelltech.block.ModBlocks;
 import net.gazerbeam2.spelltech.item.ModItemGroups;
 import net.gazerbeam2.spelltech.item.ModItems;
-import net.gazerbeam2.spelltech.removed.StripWorldEnchantments;
 import net.gazerbeam2.spelltech.util.ModLootTableModifiers;
 import net.gazerbeam2.spelltech.world.feature.ManaCrystalOreFeature;
 import net.gazerbeam2.spelltech.world.gen.ModWorldGeneration;
@@ -29,7 +28,7 @@ public class SpellTech implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModLootTableModifiers.modifyLootTables();
-		StripWorldEnchantments.register();
+//		StripWorldEnchantments.register();
 		ModWorldGeneration.generateModWorldGen();
 
 		ModItemGroups.registerItemGroups();
