@@ -20,7 +20,6 @@ public class ManaCrystalOreFeature extends Feature<OreFeatureConfig> {
 
     @Override
     public boolean generate(FeatureContext<OreFeatureConfig> context) {
-        System.out.println("Generating Mana Crystal at " + context.getOrigin());
 
         WorldAccess world = context.getWorld();
         Random random = context.getRandom();
@@ -68,7 +67,6 @@ public class ManaCrystalOreFeature extends Feature<OreFeatureConfig> {
                         BlockState currentState = world.getBlockState(pos);
 
                         for (OreFeatureConfig.Target target : config.targets) {
-                            System.out.println("Checking block: " + currentState.getBlock());
                             if (target.target.test(currentState, context.getRandom())) {
                                 world.setBlockState(pos, ModBlocks.MANA_CRYSTAL_BLOCK.getDefaultState(), Block.NOTIFY_ALL);
 
