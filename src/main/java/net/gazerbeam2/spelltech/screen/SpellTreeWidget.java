@@ -22,14 +22,13 @@ public class SpellTreeWidget extends ButtonWidget {
 
     public void setPinnedOpen(boolean pinned) {
         this.isPinnedOpen = pinned;
-        System.out.println("Button [" + getMessage().getString() + "] pinned: " + pinned);
     }
 
     public boolean isPinnedOpen() {
         return isPinnedOpen;
     }
 
-    public SpellTreeWidget(int collapsedX, int expandedX, int y, int width, int height, Text message, PressAction onPress, Identifier backgroundTexture) {
+    public SpellTreeWidget(int collapsedX, int expandedX, int y, int width, int height, Text message, PressAction onPress, Identifier backgroundTexture, String spellName) {
         super(collapsedX, y, width, height, message, onPress, DEFAULT_NARRATION_SUPPLIER);
         this.backgroundTexture = backgroundTexture;
         this.collapsedX = collapsedX;

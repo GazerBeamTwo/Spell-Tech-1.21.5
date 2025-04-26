@@ -30,4 +30,5 @@ public class SpellTechClient implements ClientModInitializer {
             }
         });
     }
+
 }
