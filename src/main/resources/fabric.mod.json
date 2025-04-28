@@ -24,15 +24,25 @@
 		],
 		"client": [
 			"net.gazerbeam2.spelltech.SpellTechClient"
+		],
+		"cardinal-components-entity": [
+			"net.gazerbeam2.spelltech.component.ModComponents"
 		]
 	},
 	"mixins": [
 		"spelltech.mixins.json"
 	],
+	"custom": {
+		"cardinal-components": [
+			"spelltech:level"
+		]
+	},
 	"depends": {
 		"fabricloader": ">=0.16.13",
 		"minecraft": "~1.21.5",
 		"java": ">=21",
+		"cardinal-components-base": ">=6.0.0",
+		"cardinal-components-entity": ">=6.0.0",
 		"fabric-api": "*"
 	},
 	"suggests": {

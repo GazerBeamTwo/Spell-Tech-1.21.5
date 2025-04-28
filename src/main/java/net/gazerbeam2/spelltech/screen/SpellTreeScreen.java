@@ -2,6 +2,7 @@ package net.gazerbeam2.spelltech.screen;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.gazerbeam2.spelltech.SpellTech;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
@@ -91,7 +92,7 @@ public class SpellTreeScreen extends Screen {
     private void addTier(String tierName, int count, int startX, int y, int spacingX) {
         for (int i = 0; i < count; i++) {
             int setY = y + i * spacingX;
-            Identifier icon = Identifier.of("spelltech", "textures/gui/spells/" + tierName + "_" + i + ".png");
+            Identifier icon = Identifier.of(SpellTech.MOD_ID, "textures/gui/spells/" + tierName + "_" + i + ".png");
 
             SpellNodeWidget node = new SpellNodeWidget(startX, setY, 48, 48, tierName + "_" + i, icon, btn -> {
                 System.out.println("Clicked " + tierName + " spell ");
@@ -110,15 +111,15 @@ public class SpellTreeScreen extends Screen {
         String[] spellNames = {"Air", "Earth", "Fire", "Water",
                 "Light", "Dark", "Void", "Nature", "Universal"};
         Identifier[] bgTextures = {
-                Identifier.of("spelltech", "textures/gui/icons/air_spell_tree.png"),
-                Identifier.of("spelltech", "textures/gui/icons/earth_spell_tree.png"),
-                Identifier.of("spelltech", "textures/gui/icons/fire_spell_tree.png"),
-                Identifier.of("spelltech", "textures/gui/icons/water_spell_tree.png"),
-                Identifier.of("spelltech", "textures/gui/icons/light_spell_tree.png"),
-                Identifier.of("spelltech", "textures/gui/icons/dark_spell_tree.png"),
-                Identifier.of("spelltech", "textures/gui/icons/void_spell_tree.png"),
-                Identifier.of("spelltech", "textures/gui/icons/nature_spell_tree.png"),
-                Identifier.of("spelltech", "textures/gui/icons/universal_spell_tree.png"),
+                Identifier.of(SpellTech.MOD_ID, "textures/gui/icons/air_spell_tree.png"),
+                Identifier.of(SpellTech.MOD_ID, "textures/gui/icons/earth_spell_tree.png"),
+                Identifier.of(SpellTech.MOD_ID, "textures/gui/icons/fire_spell_tree.png"),
+                Identifier.of(SpellTech.MOD_ID, "textures/gui/icons/water_spell_tree.png"),
+                Identifier.of(SpellTech.MOD_ID, "textures/gui/icons/light_spell_tree.png"),
+                Identifier.of(SpellTech.MOD_ID, "textures/gui/icons/dark_spell_tree.png"),
+                Identifier.of(SpellTech.MOD_ID, "textures/gui/icons/void_spell_tree.png"),
+                Identifier.of(SpellTech.MOD_ID, "textures/gui/icons/nature_spell_tree.png"),
+                Identifier.of(SpellTech.MOD_ID, "textures/gui/icons/universal_spell_tree.png"),
         };
 
 
@@ -171,7 +172,7 @@ public class SpellTreeScreen extends Screen {
 //        // Draw screen background
 //        renderBackgroundTexture(
 //                context,
-//                Identifier.of("spelltech", "textures/gui/bg/void_spell_tree.png"),
+//                Identifier.of(SpellTech.MOD_ID, "textures/gui/bg/void_spell_tree.png"),
 //                0, 0,
 //                0f, 0f,
 //                1920, 1080
