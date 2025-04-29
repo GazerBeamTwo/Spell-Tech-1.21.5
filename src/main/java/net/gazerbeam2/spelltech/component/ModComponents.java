@@ -14,6 +14,10 @@ public class ModComponents implements EntityComponentInitializer {
             SpellTech.identifier("level"), SpellLevelComponent.class
     );
 
+    public static final ComponentKey<PlayerSpellDataComponent> SPELL_DATA = ComponentRegistry.getOrCreate(
+            SpellTech.identifier("spell_data"), PlayerSpellDataComponent.class
+    );
+
     public static void register() {
         SpellTech.LOGGER.info("Registering Mod Components for " + SpellTech.MOD_ID);
         SpellTech.LOGGER.info("Component LEVEL key: {}", LEVEL);
@@ -24,5 +28,8 @@ public class ModComponents implements EntityComponentInitializer {
         registry.beginRegistration(PlayerEntity.class, LEVEL)
                 .respawnStrategy(RespawnCopyStrategy.CHARACTER)
                 .end(PlayerLevelComponent::new);
+        registry.beginRegistration(PlayerEntity.class, SPELL_DATA)
+                .respawnStrategy(RespawnCopyStrategy.CHARACTER)
+                .end(PlayerSpellDataComponentImpl::new);
     }
 }

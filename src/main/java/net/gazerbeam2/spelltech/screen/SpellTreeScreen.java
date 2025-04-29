@@ -3,11 +3,14 @@ package net.gazerbeam2.spelltech.screen;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.gazerbeam2.spelltech.SpellTech;
+import net.gazerbeam2.spelltech.util.SpellLevelUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
@@ -20,6 +23,11 @@ public class SpellTreeScreen extends Screen {
     private String selectedTree; // Default selected tree
     private List<SpellNodeWidget> spellNodes = new ArrayList<>();
 
+
+    private Text getLevelTitle(int level) {
+        return SpellLevelUtil.SpellRank.fromLevel(level).asText();
+    }
+
     public SpellTreeScreen(MinecraftClient client) {
         super(Text.of("Spell Trees"));
         this.client = client;
@@ -28,59 +36,68 @@ public class SpellTreeScreen extends Screen {
     private void loadSpellTree(String treeName) {
         spellNodes.clear();
 
-        int startX = 150; // Leave space for tree buttons on the left
+        int startX = 200; // Leave space for tree buttons on the left
         int spacingX = 60;
-        int yBasic = 100, yIntermediate = 40, yAdvanced = 40, yMaster = 100, yUltimate = 160;
+        int yStarter = 160, yBasic = 100, yIntermediate = 40, yAdvanced = 40, yMaster = 100, yUltimate = 160;
 
         if (treeName.equals("Air")) {
+            addTier("air_starter", 1, startX - 100, yStarter, spacingX);
             addTier("air_basic", 3, startX, yBasic, spacingX);
             addTier("air_intermediate", 5, startX + 100, yIntermediate, spacingX);
             addTier("air_advanced", 5, startX + 200, yAdvanced, spacingX);
             addTier("air_master", 3, startX + 300, yMaster, spacingX);
             addTier("air_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Earth")) {
+            addTier("earth_starter", 1, startX - 100, yStarter, spacingX);
             addTier("earth_basic", 3, startX, yBasic, spacingX);
             addTier("earth_intermediate", 5, startX + 100, yIntermediate, spacingX);
             addTier("earth_advanced", 5, startX + 200, yAdvanced, spacingX);
             addTier("earth_master", 3, startX + 300, yMaster, spacingX);
             addTier("earth_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Fire")) {
+            addTier("fire_starter", 1, startX - 100, yStarter, spacingX);
             addTier("fire_basic", 3, startX, yBasic, spacingX);
             addTier("fire_intermediate", 5, startX + 100, yIntermediate, spacingX);
             addTier("fire_advanced", 5, startX + 200, yAdvanced, spacingX);
             addTier("fire_master", 3, startX + 300, yMaster, spacingX);
             addTier("fire_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Water")) {
+            addTier("water_starter", 1, startX - 100, yStarter, spacingX);
             addTier("water_basic", 3, startX, yBasic, spacingX);
             addTier("water_intermediate", 5, startX + 100, yIntermediate, spacingX);
             addTier("water_advanced", 5, startX + 200, yAdvanced, spacingX);
             addTier("water_master", 3, startX + 300, yMaster, spacingX);
             addTier("water_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Light")) {
+            addTier("light_starter", 1, startX - 100, yStarter, spacingX);
             addTier("light_basic", 3, startX, yBasic, spacingX);
             addTier("light_intermediate", 5, startX + 100, yIntermediate, spacingX);
             addTier("light_advanced", 5, startX + 200, yAdvanced, spacingX);
             addTier("light_master", 3, startX + 300, yMaster, spacingX);
             addTier("light_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Dark")) {
+            addTier("dark_starter", 1, startX - 100, yStarter, spacingX);
             addTier("dark_basic", 3, startX, yBasic, spacingX);
             addTier("dark_intermediate", 5, startX + 100, yIntermediate, spacingX);
             addTier("dark_advanced", 5, startX + 200, yAdvanced, spacingX);
             addTier("dark_master", 3, startX + 300, yMaster, spacingX);
             addTier("dark_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Nature")) {
+            addTier("nature_starter", 1, startX - 100, yStarter, spacingX);
             addTier("nature_basic", 3, startX, yBasic, spacingX);
             addTier("nature_intermediate", 5, startX + 100, yIntermediate, spacingX);
             addTier("nature_advanced", 5, startX + 200, yAdvanced, spacingX);
             addTier("nature_master", 3, startX + 300, yMaster, spacingX);
             addTier("nature_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Void")) {
+            addTier("void_starter", 1, startX - 100, yStarter, spacingX);
             addTier("void_basic", 3, startX, yBasic, spacingX);
             addTier("void_intermediate", 5, startX + 100, yIntermediate, spacingX);
             addTier("void_advanced", 5, startX + 200, yAdvanced, spacingX);
             addTier("void_master", 3, startX + 300, yMaster, spacingX);
             addTier("void_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Universal")) {
+            addTier("universal_starter", 1, startX - 100, yStarter, spacingX);
             addTier("universal_basic", 3, startX, yBasic, spacingX);
             addTier("universal_intermediate", 5, startX + 100, yIntermediate, spacingX);
             addTier("universal_advanced", 5, startX + 200, yAdvanced, spacingX);
@@ -165,6 +182,23 @@ public class SpellTreeScreen extends Screen {
 
         // Draw title
         context.drawCenteredTextWithShadow(this.textRenderer, selectedTree, this.width / 2, 20, 0xFFFFFF);
+
+        // Fetch player's level
+        int playerLevel = 1;
+        if (client.player != null) {
+            var levelComponent = net.gazerbeam2.spelltech.component.ModComponents.LEVEL.get(client.player);
+            if (levelComponent != null) {
+                playerLevel = levelComponent.getLevel();
+            }
+        }
+
+        // Get colored title
+        Text levelTitle = getLevelTitle(playerLevel);
+
+        // Draw level title at top-right corner
+        int x = this.width - 10 - this.textRenderer.getWidth(levelTitle);
+        int y = 10;
+        context.drawTextWithShadow(this.textRenderer, levelTitle, x, y, 0xFFFFFFFF); // White fallback, but Text has color
 
         // Now render widgets normally
         super.render(context, mouseX, mouseY, delta);

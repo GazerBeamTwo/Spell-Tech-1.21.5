@@ -34,7 +34,8 @@
 	],
 	"custom": {
 		"cardinal-components": [
-			"spelltech:level"
+			"spelltech:level",
+			"spelltech:spell_data"
 		]
 	},
 	"depends": {

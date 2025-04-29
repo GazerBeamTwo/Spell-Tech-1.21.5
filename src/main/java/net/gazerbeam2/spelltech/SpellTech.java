@@ -3,26 +3,22 @@ package net.gazerbeam2.spelltech;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.gazerbeam2.spelltech.block.ModBlocks;
-import net.gazerbeam2.spelltech.component.PlayerLevelComponent;
 import net.gazerbeam2.spelltech.item.ModItemGroups;
 import net.gazerbeam2.spelltech.item.ModItems;
 import net.gazerbeam2.spelltech.component.ModComponents;
+import net.gazerbeam2.spelltech.spelltree.SpellAutoUnlockHandler;
+import net.gazerbeam2.spelltech.spelltree.SpellNode;
+import net.gazerbeam2.spelltech.spelltree.SpellRegistry;
 import net.gazerbeam2.spelltech.util.ModCommands;
 import net.gazerbeam2.spelltech.util.ModLootTableModifiers;
 import net.gazerbeam2.spelltech.world.feature.ManaCrystalOreFeature;
 import net.gazerbeam2.spelltech.world.gen.ModWorldGeneration;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
-import org.ladysnake.cca.api.v3.entity.EntityComponentFactoryRegistry;
-import org.ladysnake.cca.api.v3.entity.EntityComponentInitializer;
-import org.ladysnake.cca.api.v3.entity.RespawnCopyStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static net.gazerbeam2.spelltech.component.ModComponents.LEVEL;
 
 public class SpellTech implements ModInitializer {
 	public static final String MOD_ID = "spelltech";
@@ -42,6 +38,10 @@ public class SpellTech implements ModInitializer {
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
 			ModCommands.register(dispatcher);
 		});
+
+		SpellRegistry.registerAllSpells();
+		SpellAutoUnlockHandler.register();
+		// SpellRegistry.register(new SpellNode());
 
 		ModLootTableModifiers.modifyLootTables();
 		ModWorldGeneration.generateModWorldGen();
