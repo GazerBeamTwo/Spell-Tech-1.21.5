@@ -3,6 +3,9 @@ package net.gazerbeam2.spelltech.screen;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.gazerbeam2.spelltech.SpellTech;
+import net.gazerbeam2.spelltech.component.ModComponents;
+import net.gazerbeam2.spelltech.spelltree.SpellNode;
+import net.gazerbeam2.spelltech.spelltree.SpellRegistry;
 import net.gazerbeam2.spelltech.util.SpellLevelUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -38,81 +41,103 @@ public class SpellTreeScreen extends Screen {
 
         int startX = 200; // Leave space for tree buttons on the left
         int spacingX = 60;
-        int yStarter = 160, yBasic = 100, yIntermediate = 40, yAdvanced = 40, yMaster = 100, yUltimate = 160;
+        int yStarter = 160, yBasic = 100, yIntermediate = 70, yAdvanced = 40, yMaster = 70, yUltimate = 160;
 
         if (treeName.equals("Air")) {
             addTier("air_starter", 1, startX - 100, yStarter, spacingX);
             addTier("air_basic", 3, startX, yBasic, spacingX);
-            addTier("air_intermediate", 5, startX + 100, yIntermediate, spacingX);
+            addTier("air_intermediate", 4, startX + 100, yIntermediate, spacingX);
             addTier("air_advanced", 5, startX + 200, yAdvanced, spacingX);
-            addTier("air_master", 3, startX + 300, yMaster, spacingX);
+            addTier("air_master", 4, startX + 300, yMaster, spacingX);
             addTier("air_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Earth")) {
             addTier("earth_starter", 1, startX - 100, yStarter, spacingX);
             addTier("earth_basic", 3, startX, yBasic, spacingX);
-            addTier("earth_intermediate", 5, startX + 100, yIntermediate, spacingX);
+            addTier("earth_intermediate", 4, startX + 100, yIntermediate, spacingX);
             addTier("earth_advanced", 5, startX + 200, yAdvanced, spacingX);
-            addTier("earth_master", 3, startX + 300, yMaster, spacingX);
+            addTier("earth_master", 4, startX + 300, yMaster, spacingX);
             addTier("earth_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Fire")) {
             addTier("fire_starter", 1, startX - 100, yStarter, spacingX);
             addTier("fire_basic", 3, startX, yBasic, spacingX);
-            addTier("fire_intermediate", 5, startX + 100, yIntermediate, spacingX);
+            addTier("fire_intermediate", 4, startX + 100, yIntermediate, spacingX);
             addTier("fire_advanced", 5, startX + 200, yAdvanced, spacingX);
-            addTier("fire_master", 3, startX + 300, yMaster, spacingX);
+            addTier("fire_master", 4, startX + 300, yMaster, spacingX);
             addTier("fire_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Water")) {
             addTier("water_starter", 1, startX - 100, yStarter, spacingX);
             addTier("water_basic", 3, startX, yBasic, spacingX);
-            addTier("water_intermediate", 5, startX + 100, yIntermediate, spacingX);
+            addTier("water_intermediate", 4, startX + 100, yIntermediate, spacingX);
             addTier("water_advanced", 5, startX + 200, yAdvanced, spacingX);
-            addTier("water_master", 3, startX + 300, yMaster, spacingX);
+            addTier("water_master", 4, startX + 300, yMaster, spacingX);
             addTier("water_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Light")) {
             addTier("light_starter", 1, startX - 100, yStarter, spacingX);
             addTier("light_basic", 3, startX, yBasic, spacingX);
-            addTier("light_intermediate", 5, startX + 100, yIntermediate, spacingX);
+            addTier("light_intermediate", 4, startX + 100, yIntermediate, spacingX);
             addTier("light_advanced", 5, startX + 200, yAdvanced, spacingX);
-            addTier("light_master", 3, startX + 300, yMaster, spacingX);
+            addTier("light_master", 4, startX + 300, yMaster, spacingX);
             addTier("light_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Dark")) {
             addTier("dark_starter", 1, startX - 100, yStarter, spacingX);
             addTier("dark_basic", 3, startX, yBasic, spacingX);
-            addTier("dark_intermediate", 5, startX + 100, yIntermediate, spacingX);
+            addTier("dark_intermediate", 4, startX + 100, yIntermediate, spacingX);
             addTier("dark_advanced", 5, startX + 200, yAdvanced, spacingX);
-            addTier("dark_master", 3, startX + 300, yMaster, spacingX);
+            addTier("dark_master", 4, startX + 300, yMaster, spacingX);
             addTier("dark_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Nature")) {
             addTier("nature_starter", 1, startX - 100, yStarter, spacingX);
             addTier("nature_basic", 3, startX, yBasic, spacingX);
-            addTier("nature_intermediate", 5, startX + 100, yIntermediate, spacingX);
+            addTier("nature_intermediate", 4, startX + 100, yIntermediate, spacingX);
             addTier("nature_advanced", 5, startX + 200, yAdvanced, spacingX);
-            addTier("nature_master", 3, startX + 300, yMaster, spacingX);
+            addTier("nature_master", 4, startX + 300, yMaster, spacingX);
             addTier("nature_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Void")) {
             addTier("void_starter", 1, startX - 100, yStarter, spacingX);
             addTier("void_basic", 3, startX, yBasic, spacingX);
-            addTier("void_intermediate", 5, startX + 100, yIntermediate, spacingX);
+            addTier("void_intermediate", 4, startX + 100, yIntermediate, spacingX);
             addTier("void_advanced", 5, startX + 200, yAdvanced, spacingX);
-            addTier("void_master", 3, startX + 300, yMaster, spacingX);
+            addTier("void_master", 4, startX + 300, yMaster, spacingX);
             addTier("void_ultimate", 1, startX + 400, yUltimate, spacingX);
         } else if (treeName.equals("Universal")) {
             addTier("universal_starter", 1, startX - 100, yStarter, spacingX);
             addTier("universal_basic", 3, startX, yBasic, spacingX);
-            addTier("universal_intermediate", 5, startX + 100, yIntermediate, spacingX);
+            addTier("universal_intermediate", 4, startX + 100, yIntermediate, spacingX);
             addTier("universal_advanced", 5, startX + 200, yAdvanced, spacingX);
-            addTier("universal_master", 3, startX + 300, yMaster, spacingX);
+            addTier("universal_master", 4, startX + 300, yMaster, spacingX);
             addTier("universal_ultimate", 1, startX + 400, yUltimate, spacingX);
         }
     }
 
+    private boolean isUnlocked(String spellId) {
+        if (client.player == null) return false;
+        return ModComponents.SPELL_DATA.get(client.player).hasUnlocked(spellId);
+    }
+
+    private boolean shouldShowSpell(String spellId) {
+        // Check if all prerequisites are unlocked
+        List<String> prerequisites = SpellRegistry.getPrerequisites(spellId);
+        for (String prereq : prerequisites) {
+            if (!isUnlocked(prereq)) return false;
+        }
+        return true;
+    }
     private void addTier(String tierName, int count, int startX, int y, int spacingX) {
         for (int i = 0; i < count; i++) {
             int setY = y + i * spacingX;
-            Identifier icon = Identifier.of(SpellTech.MOD_ID, "textures/gui/spells/" + tierName + "_" + i + ".png");
+            String spellId = tierName + "_" + i;
 
-            SpellNodeWidget node = new SpellNodeWidget(startX, setY, 48, 48, tierName + "_" + i, icon, btn -> {
-                System.out.println("Clicked " + tierName + " spell ");
+            // 🔍 Get the actual spell node
+            SpellNode spellNode = SpellRegistry.get(spellId);
+            if (spellNode == null) continue;
+
+            // ✅ Determine if it should be shown
+            boolean show = shouldShowSpell(spellId);
+            if (!show) continue;
+
+            boolean unlocked = isUnlocked(spellId);
+            SpellNodeWidget node = new SpellNodeWidget(startX, setY, 48, 48, spellNode, unlocked, btn -> {
+                System.out.println("Clicked " + spellNode.getName());
             });
 
             spellNodes.add(node);
@@ -149,13 +174,22 @@ public class SpellTreeScreen extends Screen {
                     Text.empty(),
                     btn -> {
                         SpellTreeWidget thisBtn = (SpellTreeWidget) btn;
-                        boolean alreadyPinned = thisBtn.isPinnedOpen();
+                        boolean wasPinned = thisBtn.isPinnedOpen(); // ← capture before unpinning others
 
+                        // Unpin all buttons
                         for (SpellTreeWidget b : buttons) b.setPinnedOpen(false);
-                        thisBtn.setPinnedOpen(!alreadyPinned);
 
-                        this.selectedTree = treeName;
-                        loadSpellTree(treeName);
+                        // If it was already open and clicked again → close it
+                        if (wasPinned) {
+                            this.selectedTree = null;
+                            clearSpellTree(); // clear UI elements
+                        } else {
+                            // Otherwise open this one
+                            clearSpellTree(); // clear UI elements
+                            thisBtn.setPinnedOpen(true);
+                            this.selectedTree = treeName;
+                            loadSpellTree(treeName); // load UI
+                        }
 
                     },
                     bgTextures[i],
@@ -164,6 +198,13 @@ public class SpellTreeScreen extends Screen {
             buttons.add(button);
             addDrawableChild(button);
         }
+    }
+
+    private void clearSpellTree() {
+        for (SpellNodeWidget widget : spellNodes) {
+            remove(widget);
+        }
+        spellNodes.clear();
     }
 
     // Handle when a button is clicked
