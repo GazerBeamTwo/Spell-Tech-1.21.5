@@ -1,5 +1,6 @@
 package net.gazerbeam2.spelltech.screen;
 
+import com.mojang.blaze3d.vertex.VertexFormat;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.gazerbeam2.spelltech.SpellTech;
@@ -10,14 +11,17 @@ import net.gazerbeam2.spelltech.util.SpellLevelUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.text.Style;
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec2f;
+import org.lwjgl.opengl.GL11;
+
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Environment(EnvType.CLIENT)
 public class SpellTreeScreen extends Screen {
@@ -25,6 +29,8 @@ public class SpellTreeScreen extends Screen {
     private List<SpellTreeWidget> buttons = new ArrayList<>();
     private String selectedTree; // Default selected tree
     private List<SpellNodeWidget> spellNodes = new ArrayList<>();
+    Map<String, Vec2f> nodeCenters = new HashMap<>();
+
 
 
     private Text getLevelTitle(int level) {
@@ -140,6 +146,11 @@ public class SpellTreeScreen extends Screen {
                 System.out.println("Clicked " + spellNode.getName());
             });
 
+            // Compute center position of the widget
+            float centerX = startX + node.getWidth() / 2f;
+            float centerY = setY + node.getHeight() / 2f;
+            nodeCenters.put(spellId, new Vec2f(centerX, centerY));
+
             spellNodes.add(node);
             addDrawableChild(node);
         }
@@ -244,17 +255,7 @@ public class SpellTreeScreen extends Screen {
         // Now render widgets normally
         super.render(context, mouseX, mouseY, delta);
 
-//        // Draw screen background
-//        renderBackgroundTexture(
-//                context,
-//                Identifier.of(SpellTech.MOD_ID, "textures/gui/bg/void_spell_tree.png"),
-//                0, 0,
-//                0f, 0f,
-//                1920, 1080
-//        );
-
-        // Draw lines between spell nodes
-//        renderConnections(context);
+        drawSpellConnections(context);
 
         for (SpellNodeWidget node : spellNodes) {
             node.renderCustom(context);
@@ -295,6 +296,44 @@ public class SpellTreeScreen extends Screen {
 //        matrices.pop(); // Restore matrix
 //
 //    }
+
+    private SpellNodeWidget findNodeById(String spellId) {
+        for (SpellNodeWidget node : spellNodes) {
+            if (node.getSpellNode().getId().equals(spellId)) return node;
+        }
+        return null;
+    }
+
+    private void drawSpellConnections(DrawContext context) {
+
+        for (SpellNodeWidget fromNode : spellNodes) {
+            SpellNode fromSpell = fromNode.getSpellNode();
+            for (String prereqId : fromSpell.getPrerequisites()) {
+                SpellNodeWidget toNode = findNodeById(prereqId);
+                if (toNode == null) continue;
+
+                int x1 = fromNode.getX() + fromNode.getWidth() / 2;
+                int y1 = fromNode.getY() + fromNode.getHeight() / 2;
+                int x2 = toNode.getX() + toNode.getWidth() / 2;
+                int y2 = toNode.getY() + toNode.getHeight() / 2;
+
+                drawThickLine(context, x1, y1, x2, y2, 2, 0x80FFFFFF); // 2px white semi-transparent line
+            }
+        }
+    }
+
+    private void drawThickLine(DrawContext context, int x1, int y1, int x2, int y2, int thickness, int color) {
+        int dx = x2 - x1;
+        int dy = y2 - y1;
+        int steps = Math.max(Math.abs(dx), Math.abs(dy));
+
+        for (int i = 0; i <= steps; i++) {
+            float t = steps == 0 ? 0 : (float) i / steps;
+            int x = Math.round(x1 + t * dx);
+            int y = Math.round(y1 + t * dy);
+            context.fill(x - thickness / 2, y - thickness / 2, x + thickness / 2, y + thickness / 2, color);
+        }
+    }
 
     @Override
     public boolean shouldPause() {

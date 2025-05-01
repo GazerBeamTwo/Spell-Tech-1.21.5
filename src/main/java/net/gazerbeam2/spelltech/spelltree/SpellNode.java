@@ -12,16 +12,20 @@ public class SpellNode {
     private final String id;                      // Unique spell ID (e.g., "fire_basic_0")
     private final String name;                    // Display name (e.g., "Ember Bolt")
     private final Identifier icon;                // Path to the icon texture
+    private final String description;
     private final int tier;                       // Tier in the spell tree (e.g., 0 for base, 3 for advanced)
+    private final boolean isActive;
     private final List<String> prerequisites;     // Other spell IDs that must be unlocked
     private final UnlockCondition unlockCondition; // A custom condition (more on this below)
     public final int requiredLevelComponentRank; // The required rank in the level component
 
-    public SpellNode(String id, String name, Identifier icon, int tier, List<String> prerequisites, UnlockCondition unlockCondition, int requiredLevelComponentRank) {
+    public SpellNode(String id, String name, Identifier icon, String description, int tier, boolean isActive, List<String> prerequisites, UnlockCondition unlockCondition, int requiredLevelComponentRank) {
         this.id = id;
         this.name = name;
         this.icon = icon;
+        this.description = description;
         this.tier = tier;
+        this.isActive = isActive;
         this.prerequisites = prerequisites;
         this.unlockCondition = unlockCondition;
         this.requiredLevelComponentRank = requiredLevelComponentRank;
@@ -31,6 +35,8 @@ public class SpellNode {
     public String getName() { return name; }
     public Identifier getIcon() { return icon; }
     public int getTier() { return tier; }
+    public String getDescription() { return description; }
+    public boolean getActive() { return isActive; };
     public List<String> getPrerequisites() { return prerequisites; }
     public UnlockCondition getUnlockCondition() { return unlockCondition; }
     public int requiredLevelComponentRank() { return requiredLevelComponentRank; }
